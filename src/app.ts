@@ -10,9 +10,20 @@ import reviewRoutes from './routes/review.routes';
 dotenv.config();
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://book-review-backend-2-l59z.onrender.com',
+];
+
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
