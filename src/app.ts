@@ -12,7 +12,7 @@ const app = express();
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://book-review-backend-2-l59z.onrender.com',
+  'https://book-review-aamp.onrender.com',
 ];
 
 app.use(
